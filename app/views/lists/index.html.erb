@@ -1,6 +1,15 @@
-<h1>My Lists</h1>
-<%@lists.each do |list|%>
-  <li><%=link_to list.name, list_path(list)%></li>
-<%end%>
-<p><%=link_to "Add a list", new_list_path%></p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%=image_url "hero_banner.jpeg"%>)">
+    <h1><strong>Watch List</strong></h1>
+    <p>Create endless movies list for you and your family</p>
+</div>
 
+<div class="cards">
+<%@lists.each do |list|%>
+  <div class="card-list">
+  <li><%=link_to list.name, list_path(list)%></li>
+  </div>
+<%end%>
+</div>
+<div class="text-center">
+<p><%=link_to "Add a list", new_list_path, class: "btn btn-flat"%></p>
+</div>
