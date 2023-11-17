@@ -1,15 +1,17 @@
-<div class="cards">
-  <h2><%=@list.name%></h2>
+<div class="container">
+<h2><%=@list.name%></h2>
   <p><%=link_to "add a movie", new_list_bookmark_path(@list), class: "btn btn-flat"%></p>
+<div class="cards">
     <%@list.movies.each do |movie|%>
       <div class="card-movie">
       <p><%=movie.title%></p>
-      <%=image_tag movie.poster_url, alt: movie.title, width: 200 %>
+      <%=image_tag movie.poster_url, alt: movie.title%>
       <p><%=movie.overview%></p>
       <p><%=movie.rating%></p>
       <%bookmark = movie.bookmarks.find_by(list: @list)%>
       <p><%= bookmark.comment %></p>
-      <p><%=link_to"delete", list_bookmark_path(@list)%></p>
+      <p><%=link_to "delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></p>
       </div>
     <%end%>
+</div>
 </div>
